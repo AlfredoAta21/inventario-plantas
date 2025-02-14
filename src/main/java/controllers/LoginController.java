@@ -71,12 +71,30 @@ public class LoginController implements Initializable {
         }
     }
 
+    @FXML
+    void handleRegister(ActionEvent event) {
+        openRegistroWindow();
+    }
+
     private void openAltaPlantasWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/altaPlantas.fxml"));
             AnchorPane pane = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Alta de Plantas");
+            stage.setScene(new Scene(pane));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openRegistroWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/registro.fxml"));
+            AnchorPane pane = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Registro de Cuenta");
             stage.setScene(new Scene(pane));
             stage.show();
         } catch (IOException e) {

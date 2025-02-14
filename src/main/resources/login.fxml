@@ -9,19 +9,20 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="392.0" prefWidth="395.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cee7d2" height="344.0" layoutX="23.0" layoutY="27.0" stroke="BLACK" strokeType="INSIDE" width="350.0" />
-      <Label layoutX="74.0" layoutY="133.0" text="Usuario:" />
-      <TextField fx:id="txtUsername" layoutX="173.0" layoutY="133.0" />
-      <Label layoutX="73.0" layoutY="179.0" text="Contraseña:" />
-      <PasswordField fx:id="txtPassword" layoutX="173.0" layoutY="179.0" />
-      <Label layoutX="73.0" layoutY="218.0" text="Tipo de Usuario:" />
-      <ComboBox fx:id="cmbUserType" layoutX="173.0" layoutY="218.0" />
-      <Button layoutX="168.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleLogin" text="Acceder" />
-      <Label layoutX="168.0" layoutY="47.0" prefHeight="37.0" prefWidth="59.0" text="Login" textAlignment="CENTER">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef7ff" height="372.0" layoutX="21.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="358.0" />
+      <Label layoutX="43.0" layoutY="116.0" text="Nombre de Usuario:" />
+      <TextField fx:id="txtUsername" layoutX="193.0" layoutY="116.0" />
+      <Label layoutX="43.0" layoutY="166.0" text="Contraseña:" />
+      <PasswordField fx:id="txtPassword" layoutX="193.0" layoutY="166.0" />
+      <Label layoutX="43.0" layoutY="216.0" text="Tipo de Usuario:" />
+      <ComboBox fx:id="cmbUserType" layoutX="193.0" layoutY="216.0" />
+      <Button layoutX="143.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleLogin" text="Iniciar Sesión" />
+      <Button layoutX="143.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleRegister" text="Crear Cuenta" />
+      <Label layoutX="157.0" layoutY="48.0" text="Login">
          <font>
-            <Font size="24.0" />
+            <Font size="29.0" />
          </font>
       </Label>
    </children>

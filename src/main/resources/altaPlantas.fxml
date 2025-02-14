@@ -6,15 +6,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AltaPlantasController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faffaf" height="386.0" layoutX="9.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="583.0" />
       <Label layoutX="50.0" layoutY="30.0" text="Nombre de la Planta:" />
       <TextField fx:id="txtNombrePlanta" layoutX="200.0" layoutY="30.0" />
       <Button layoutX="150.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAltaPlanta" text="Dar de Alta" />
       <TableView fx:id="tablePlantas" layoutX="50.0" layoutY="130.0" prefHeight="200.0" prefWidth="500.0">
          <columns>
-            <TableColumn fx:id="colNombrePlanta" text="Nombre de la Planta" prefWidth="500.0" />
+            <TableColumn fx:id="colNombrePlanta" prefWidth="500.0" text="Nombre de la Planta" />
          </columns>
       </TableView>
    </children>
