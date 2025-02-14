@@ -1,5 +1,6 @@
 package application;
 
+import controllers.BaseDatos;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
-
+    BaseDatos mBD = new BaseDatos();
     public static void main(String[] args) {
         launch(args);
     }
@@ -22,5 +23,8 @@ public class App extends Application {
         Scene scene = new Scene(load);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        mBD.conectar();         // Esto es para probar la conexion jaja
+
     }
 }

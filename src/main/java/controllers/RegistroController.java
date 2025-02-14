@@ -20,6 +20,8 @@ public class RegistroController {
     @FXML
     private ComboBox<String> cmbUserType;
 
+    BaseDatos mBD = new BaseDatos();
+
     @FXML
     public void initialize() {
         cmbUserType.setItems(FXCollections.observableArrayList("Admin", "User"));
@@ -39,11 +41,17 @@ public class RegistroController {
             alert.showAndWait();
         } else {
             // Aquí puedes agregar la lógica para guardar la cuenta en una base de datos o en memoria
+            agregarUsuario(username, password, userType);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Registro Exitoso");
             alert.setHeaderText(null);
             alert.setContentText("Cuenta registrada exitosamente.");
             alert.showAndWait();
         }
+    }
+
+    public void agregarUsuario(String Nombre, String contraseña , String tipoUsuario) {
+        Boolean esAdmin = tipoUsuario.equals("Admin");
+        mBD.agregarUsuario(Nombre, contraseña, esAdmin);
     }
 }
