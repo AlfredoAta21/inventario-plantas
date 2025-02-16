@@ -1,0 +1,19 @@
+.gradient-rectangle {
+    -fx-fill: linear-gradient(to bottom, #459f6a, #34a165, #c7f5c7)
+}
+
+.button {
+    -fx-background-color: #018c5c;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #016b4a;
+}
+
+
+.button:pressed {
+    -fx-background-color: #014d36;
+}

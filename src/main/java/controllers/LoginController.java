@@ -27,40 +27,20 @@ public class LoginController implements Initializable {
     private PasswordField txtPassword;
 
     @FXML
-    private ComboBox<String> cmbUserType;
 
     BaseDatos mBD = new BaseDatos();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cmbUserType.setItems(FXCollections.observableArrayList("Admin", "User"));
     }
 
     @FXML
     void handleLogin(ActionEvent event) {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
-        String userType = cmbUserType.getValue();
 
-        if (userType == null) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Login Failed");
-            alert.setHeaderText(null);
-            alert.setContentText("Please select a user type.");
-            alert.showAndWait();
-            return;
-        }
 
-        if (username.isEmpty() || password.isEmpty()) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Login Failed");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all fields.");
-            alert.showAndWait();
-            return;
-        }
-
-        validarCredenciales(username, password, userType);
+        validarCredenciales(username, password);
 
     }
 
@@ -95,15 +75,20 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void validarCredenciales(String username, String password, String userType) {
-        Boolean esAdmin = userType.equals("Admin");
-        System.out.println(esAdmin);
-        Boolean exito = mBD.validarUsuario(username, password, esAdmin);
+    public void validarCredenciales(String username, String password) {
+        Boolean exito = mBD.validarUsuario(username, password);
         if (exito) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Login");
             alert.setHeaderText(null);
-            alert.setContentText("Bienvenido " + userType + "!");
+            Boolean esAdmin = mBD.esAdmin(username, password);
+            if(esAdmin){
+                alert.setContentText("Bienvenido Administrador!");
+                openAltaPlantasWindow();
+            }
+            else{
+                alert.setContentText("Bienvenido Usuario!");
+            }
             alert.showAndWait();
         } else {
             Alert alert = new Alert(AlertType.ERROR);

@@ -24,24 +24,20 @@ public class RegistroController {
 
     @FXML
     public void initialize() {
-        cmbUserType.setItems(FXCollections.observableArrayList("Admin", "User"));
     }
 
     @FXML
     void handleRegister(ActionEvent event) {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
-        String userType = cmbUserType.getValue();
-
-        if (username.isEmpty() || password.isEmpty() || userType == null) {
+        if (username.isEmpty() || password.isEmpty()) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error de Registro");
             alert.setHeaderText(null);
             alert.setContentText("Todos los campos son obligatorios.");
             alert.showAndWait();
         } else {
-            // Aquí puedes agregar la lógica para guardar la cuenta en una base de datos o en memoria
-            agregarUsuario(username, password, userType);
+            agregarUsuario(username, password);
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Registro Exitoso");
             alert.setHeaderText(null);
@@ -50,8 +46,7 @@ public class RegistroController {
         }
     }
 
-    public void agregarUsuario(String Nombre, String contraseña , String tipoUsuario) {
-        Boolean esAdmin = tipoUsuario.equals("Admin");
-        mBD.agregarUsuario(Nombre, contraseña, esAdmin);
+    public void agregarUsuario(String Nombre, String contraseña) {
+        mBD.agregarUsuario(Nombre, contraseña, false);
     }
 }
