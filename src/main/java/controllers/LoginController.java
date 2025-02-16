@@ -27,8 +27,6 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField txtPassword;
 
-    @FXML
-
     BaseDatos mBD = new BaseDatos();
 
     @Override
@@ -40,9 +38,7 @@ public class LoginController implements Initializable {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
 
-
         validarCredenciales(username, password);
-
     }
 
     @FXML
@@ -70,6 +66,7 @@ public class LoginController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Registro de Cuenta");
             stage.setScene(new Scene(pane));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/flor.png")));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

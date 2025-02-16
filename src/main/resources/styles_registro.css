@@ -9,6 +9,7 @@
     -fx-background-radius: 5px;
 }
 
+
 .button:hover {
     -fx-background-color: #016b4a;
 }
@@ -16,4 +17,20 @@
 
 .button:pressed {
     -fx-background-color: #014d36;
+}
+
+
+.buttonRegreso {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+}
+
+.buttonRegreso:hover {
+    -fx-background-color: #5a6268;
+}
+
+.buttonRegreso:pressed {
+    -fx-background-color: #484e53;
 }

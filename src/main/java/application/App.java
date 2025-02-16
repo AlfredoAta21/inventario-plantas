@@ -27,6 +27,7 @@ public class App extends Application {
         Scene scene = new Scene(load);
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setTitle("Catalogo de Plantas");
 
         mBD.conectar();         // Esto es para probar la conexion jaja
 

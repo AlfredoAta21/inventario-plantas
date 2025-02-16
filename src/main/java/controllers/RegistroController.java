@@ -1,13 +1,13 @@
 package controllers;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class RegistroController {
 
@@ -16,9 +16,6 @@ public class RegistroController {
 
     @FXML
     private PasswordField txtPassword;
-
-    @FXML
-    private ComboBox<String> cmbUserType;
 
     BaseDatos mBD = new BaseDatos();
 
@@ -44,6 +41,11 @@ public class RegistroController {
             alert.setContentText("Cuenta registrada exitosamente.");
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    public void handleRegresar(ActionEvent event) {
+        ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
     public void agregarUsuario(String Nombre, String contraseña) {

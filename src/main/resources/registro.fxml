@@ -16,32 +16,48 @@
       <URL value="@styles_registro.css" />
    </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="644.0" layoutX="397.0" layoutY="-6.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gradient-rectangle" width="460.0" />      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="638.0" layoutX="-3.0" layoutY="-2.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="3.0" width="400.0" />
-      <Label layoutX="67.0" layoutY="185.0" text="Usuario">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="644.0" layoutY="-1.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gradient-rectangle" width="460.0" />      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="638.0" layoutX="447.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="3.0" width="400.0" />
+      <Label layoutX="517.0" layoutY="187.0" text="Usuario">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TextField fx:id="txtUsername" layoutX="67.0" layoutY="211.0" prefHeight="25.0" prefWidth="244.0" promptText="Usuario" />
-      <Label layoutX="72.0" layoutY="293.0" text="Contraseña">
+      <TextField fx:id="txtUsername" layoutX="517.0" layoutY="230.0" prefHeight="25.0" prefWidth="244.0" promptText="Usuario" />
+      <Label layoutX="522.0" layoutY="295.0" text="Contraseña">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <PasswordField fx:id="txtPassword" layoutX="67.0" layoutY="327.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" />
-      <Button layoutX="152.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleRegister" text="Registrar" />
-      <Label layoutX="112.0" layoutY="69.0" text="Crear Cuenta" textFill="#32333d">
+      <PasswordField fx:id="txtPassword" layoutX="517.0" layoutY="341.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" />
+      <Button layoutX="596.0" layoutY="503.0" mnemonicParsing="false" onAction="#handleRegister" text="Registrarse" />
+      <Label layoutX="551.0" layoutY="81.0" text="Crear Cuenta" textFill="#32333d">
          <font>
-            <Font size="25.0" />
+            <Font size="31.0" />
          </font>
       </Label>
-      <ImageView fitHeight="52.0" fitWidth="50.0" layoutX="35.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="52.0" fitWidth="50.0" layoutX="485.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/flor.png" />
          </image>
       </ImageView>
-      <Label layoutX="96.0" layoutY="39.0" text="Nombre app por decidir" textFill="#32333d">
+      <Label layoutX="546.0" layoutY="41.0" text="Nombre app por decidir" textFill="#32333d">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
+      <ImageView fitHeight="111.0" fitWidth="154.0" layoutX="64.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/cosa%20de%20la%20bienvenida%20jaja.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="73.0" layoutY="284.0" prefHeight="77.0" prefWidth="315.0" text="¡Bienvenido!" textFill="WHITE">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="53.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="251.0" fitWidth="216.0" layoutX="217.0" layoutY="402.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Miyu.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="761.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleRegresar" styleClass="buttonRegreso" text="Regresar" />
    </children>
 </AnchorPane>

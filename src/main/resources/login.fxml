@@ -19,12 +19,12 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f7fa" height="640.0" layoutX="394.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" styleClass="gradient-rectangle" width="451.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="625.0" stroke="#f0f2f2" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" width="394.0" />
       <TextField fx:id="txtUsername" layoutX="75.0" layoutY="260.0" prefHeight="25.0" prefWidth="244.0" promptText="Usuario" />
-      <PasswordField fx:id="txtPassword" layoutX="75.0" layoutY="359.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" />
+      <PasswordField fx:id="txtPassword" layoutX="76.0" layoutY="370.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" />
       <Button layoutX="148.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="button" text="Iniciar Sesión" />
       <Button id="registerButton" layoutX="287.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleRegister" text="Crear Cuenta" />
-      <Label layoutX="161.0" layoutY="58.0" text="Login" textFill="#32333d">
+      <Label layoutX="108.0" layoutY="64.0" text="Iniciar Sesión" textFill="#32333d">
          <font>
-            <Font size="29.0" />
+            <Font size="31.0" />
          </font>
       </Label>
       <Label layoutX="75.0" layoutY="217.0" text="Usuario" textFill="#32333d">
