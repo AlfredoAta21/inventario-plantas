@@ -8,7 +8,7 @@ public class BaseDatos {
     private static Statement consulta;
     private static ResultSet resultado;
 
-    private final String AGREGAR_USUARIO = "INSERT INTO Usuario (Nombre, Contraseña, Imagen, Adminis) VALUES (?, ?, ?, ?)";
+    private final String AGREGAR_USUARIO = "INSERT INTO Usuario (Nombre, Contraseña, Imagen, esAdmin) VALUES (?, ?, ?, ?)";
 
 
     public BaseDatos() {
@@ -50,13 +50,26 @@ public class BaseDatos {
         }
     }
 
-    public boolean validarUsuario(String username, String password, Boolean userType){
+    public boolean validarUsuario(String username, String password){
         try {
             consulta = con.createStatement();
-            resultado = consulta.executeQuery("CALL validacion_usuario('" + username + "', '" + password + "', " + userType + ")");
+            resultado = consulta.executeQuery("CALL validacion_usuario('" + username + "', '" + password + "')");
             if (resultado.next()) {
                 return true;
             }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean esAdmin(String username, String password) {
+        try {
+            consulta = con.createStatement();
+            resultado = consulta.executeQuery("CALL obtener_admin('" + username + "', '" + password + "')");
+        if (resultado.next() && resultado.getInt("esAdmin") == 1) {
+            return true;
+        }
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -1,29 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane prefHeight="615.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <stylesheets>
+      <URL value="@styles_login.css" />
+   </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef7ff" height="372.0" layoutX="21.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="358.0" />
-      <Label layoutX="43.0" layoutY="116.0" text="Nombre de Usuario:" />
-      <TextField fx:id="txtUsername" layoutX="193.0" layoutY="116.0" />
-      <Label layoutX="43.0" layoutY="166.0" text="Contraseña:" />
-      <PasswordField fx:id="txtPassword" layoutX="193.0" layoutY="166.0" />
-      <Label layoutX="43.0" layoutY="216.0" text="Tipo de Usuario:" />
-      <ComboBox fx:id="cmbUserType" layoutX="193.0" layoutY="216.0" />
-      <Button layoutX="143.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleLogin" text="Iniciar Sesión" />
-      <Button layoutX="143.0" layoutY="316.0" mnemonicParsing="false" onAction="#handleRegister" text="Crear Cuenta" />
-      <Label layoutX="157.0" layoutY="48.0" text="Login">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f7fa" height="640.0" layoutX="394.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" styleClass="gradient-rectangle" width="451.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf5f0" height="625.0" stroke="#f0f2f2" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" width="394.0" />
+      <TextField fx:id="txtUsername" layoutX="75.0" layoutY="260.0" prefHeight="25.0" prefWidth="244.0" promptText="Usuario" />
+      <PasswordField fx:id="txtPassword" layoutX="76.0" layoutY="370.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" />
+      <Button layoutX="148.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="button" text="Iniciar Sesión" />
+      <Button id="registerButton" layoutX="287.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleRegister" text="Crear Cuenta" />
+      <Label layoutX="108.0" layoutY="64.0" text="Iniciar Sesión" textFill="#32333d">
          <font>
-            <Font size="29.0" />
+            <Font size="31.0" />
          </font>
       </Label>
+      <Label layoutX="75.0" layoutY="217.0" text="Usuario" textFill="#32333d">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="75.0" layoutY="325.0" text="Contraseña" textFill="#32333d">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="111.0" fitWidth="154.0" layoutX="440.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/cosa%20de%20la%20bienvenida%20jaja.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="462.0" layoutY="278.0" prefHeight="77.0" prefWidth="315.0" text="¡Bienvenido!" textFill="#faf5f0">
+         <font>
+            <Font name="Yu Gothic UI Semibold" size="53.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="52.0" fitWidth="50.0" layoutX="25.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/flor.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="86.0" layoutY="29.0" text="Nombre app por decidir" textFill="#32333d">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="251.0" fitWidth="216.0" layoutX="615.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Miyu.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
