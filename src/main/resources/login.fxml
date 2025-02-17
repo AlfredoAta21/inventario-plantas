@@ -17,7 +17,7 @@
    </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f7fa" height="640.0" layoutX="394.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" styleClass="gradient-rectangle" width="451.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="625.0" stroke="#f0f2f2" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" width="394.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf5f0" height="625.0" stroke="#f0f2f2" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="OUTSIDE" width="394.0" />
       <TextField fx:id="txtUsername" layoutX="75.0" layoutY="260.0" prefHeight="25.0" prefWidth="244.0" promptText="Usuario" />
       <PasswordField fx:id="txtPassword" layoutX="76.0" layoutY="370.0" prefHeight="25.0" prefWidth="244.0" promptText="Contraseña" />
       <Button layoutX="148.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleLogin" styleClass="button" text="Iniciar Sesión" />
@@ -42,7 +42,7 @@
             <Image url="@images/cosa%20de%20la%20bienvenida%20jaja.png" />
          </image>
       </ImageView>
-      <Label layoutX="462.0" layoutY="278.0" prefHeight="77.0" prefWidth="315.0" text="¡Bienvenido!" textFill="WHITE">
+      <Label layoutX="462.0" layoutY="278.0" prefHeight="77.0" prefWidth="315.0" text="¡Bienvenido!" textFill="#faf5f0">
          <font>
             <Font name="Yu Gothic UI Semibold" size="53.0" />
          </font>

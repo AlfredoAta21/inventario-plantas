@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,7 +21,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
-
+    
+    Boolean esAdmin = false;
+    
     @FXML
     private TextField txtUsername;
 
@@ -53,6 +56,25 @@ public class LoginController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("Alta de Plantas");
             stage.setScene(new Scene(pane));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/flor.png")));
+            stage = (Stage) txtUsername.getScene().getWindow();
+            stage.close();
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openUsuarioWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/usuario.fxml"));
+            AnchorPane pane = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Usuario");
+            stage.setScene(new Scene(pane));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/flor.png")));
+            stage = (Stage) txtUsername.getScene().getWindow();
+            stage.close();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,6 +90,8 @@ public class LoginController implements Initializable {
             stage.setScene(new Scene(pane));
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/flor.png")));
             stage.show();
+            stage = (Stage) txtUsername.getScene().getWindow();
+            stage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,25 +99,28 @@ public class LoginController implements Initializable {
 
     public void validarCredenciales(String username, String password) {
         Boolean exito = mBD.validarUsuario(username, password);
-        if (exito) {
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Login");
-            alert.setHeaderText(null);
-            Boolean esAdmin = mBD.esAdmin(username, password);
-            if(esAdmin){
-                alert.setContentText("Bienvenido Administrador!");
-                openAltaPlantasWindow();
-            }
-            else{
-                alert.setContentText("Bienvenido Usuario!");
-            }
-            alert.showAndWait();
-        } else {
+
+        if (!exito) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Alerta de Login");
             alert.setHeaderText(null);
             alert.setContentText("usuario o contraseña, invalido");
             alert.showAndWait();
+            return;
         }
+
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Login");
+        alert.setHeaderText(null);
+        esAdmin = mBD.esAdmin(username, password);
+        if(esAdmin){
+            alert.setContentText("Bienvenido Administrador!");
+            openAltaPlantasWindow();
+        }
+        else{
+            alert.setContentText("Bienvenido Usuario!");
+            openUsuarioWindow();
+        }
+            alert.showAndWait();
     }
 }

@@ -16,7 +16,7 @@
       <URL value="@styles_registro.css" />
    </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="644.0" layoutY="-1.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gradient-rectangle" width="460.0" />      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="638.0" layoutX="447.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="3.0" width="400.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="644.0" layoutY="-1.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gradient-rectangle" width="460.0" />      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf5f0" height="638.0" layoutX="447.0" stroke="#f0f2f2" strokeType="OUTSIDE" strokeWidth="3.0" width="400.0" />
       <Label layoutX="517.0" layoutY="187.0" text="Usuario">
          <font>
             <Font size="18.0" />
@@ -48,7 +48,7 @@
             <Image url="@images/cosa%20de%20la%20bienvenida%20jaja.png" />
          </image>
       </ImageView>
-      <Label layoutX="73.0" layoutY="284.0" prefHeight="77.0" prefWidth="315.0" text="¡Bienvenido!" textFill="WHITE">
+      <Label layoutX="73.0" layoutY="284.0" prefHeight="77.0" prefWidth="315.0" text="¡Bienvenido!" textFill="#faf5f0">
          <font>
             <Font name="Yu Gothic UI Semibold" size="53.0" />
          </font>
