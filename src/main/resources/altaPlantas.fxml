@@ -26,14 +26,14 @@
          </font></Label>
       <TextField fx:id="txtNombrePlanta" layoutX="247.0" layoutY="97.0" prefHeight="25.0" prefWidth="178.0" />
       <Button layoutX="907.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonAlta" text="Dar de Alta" />
-      <TableView fx:id="tablePlantas" fixedCellSize="20.0" layoutX="194.0" layoutY="282.0" prefHeight="303.0" prefWidth="679.0">
+      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="194.0" layoutY="282.0" prefHeight="303.0" prefWidth="679.0">
          <columns>
             <TableColumn fx:id="colNombrePlanta" prefWidth="190.0" text="Nombre de la Planta" />
-            <TableColumn prefWidth="488.0" text="Descripción" />
+            <TableColumn fx:id="colDescripcionPlanta" prefWidth="488.0" text="Descripción" />
          </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a402b" height="60.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1040.0" />
-      <Button layoutX="906.0" layoutY="13.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="112.0" styleClass="buttonCerrarSesion" text="   Cerrar sesión" />
+      <Button layoutX="906.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleCerrarSesion" prefHeight="35.0" prefWidth="112.0" styleClass="buttonCerrarSesion" text="   Cerrar sesión" />
       <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="912.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/salir.png" />
@@ -43,7 +43,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextArea layoutX="247.0" layoutY="139.0" prefHeight="60.0" prefWidth="267.0" />
+      <TextArea fx:id="txtDescripcion" layoutX="247.0" layoutY="139.0" prefHeight="60.0" prefWidth="267.0" />
       <ImageView fitHeight="52.0" fitWidth="50.0" layoutX="27.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/flor.png" />

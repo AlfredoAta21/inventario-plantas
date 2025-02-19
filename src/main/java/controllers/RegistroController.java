@@ -1,5 +1,6 @@
 package controllers;
 
+import BaseDatos.BaseDatos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -22,6 +24,9 @@ public class RegistroController {
 
     @FXML
     private PasswordField txtPassword;
+
+    @FXML
+    private TextArea txtDescripcion;
 
     BaseDatos mBD = new BaseDatos();
 

@@ -1,6 +1,6 @@
 package controllers;
 
-import javafx.collections.FXCollections;
+import BaseDatos.BaseDatos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,8 +71,6 @@ public class LoginController implements Initializable {
             stage.setTitle("Usuario");
             stage.setScene(new Scene(pane));
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/flor.png")));
-            stage = (Stage) txtUsername.getScene().getWindow();
-            stage.close();
             Stage currentStage = (Stage) txtUsername.getScene().getWindow();
             currentStage.close();
             stage.show();
