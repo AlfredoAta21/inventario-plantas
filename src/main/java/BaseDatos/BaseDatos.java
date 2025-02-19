@@ -1,6 +1,9 @@
-package controllers;
+package BaseDatos;
+
+import controllers.AltaPlantasController;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BaseDatos {
     private static Connection con;
@@ -9,6 +12,7 @@ public class BaseDatos {
     private static ResultSet resultado;
 
     private final String AGREGAR_USUARIO = "INSERT INTO Usuario (Nombre, Contraseña, Imagen, esAdmin) VALUES (?, ?, ?, ?)";
+    private final String AGREGAR_PLANTA = "INSERT INTO Planta (Nombre, Descripcion) VALUES (?, ?)";
 
 
     public BaseDatos() {
@@ -74,5 +78,35 @@ public class BaseDatos {
             System.out.println(e);
         }
         return false;
+    }
+
+    public boolean agregarPlanta(String nombre, String descripcion) {
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement(AGREGAR_PLANTA);
+            ps.setString(1, nombre);
+            ps.setString(2, descripcion);
+            ps.executeUpdate();
+            System.out.println("Planta agregada");
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public ArrayList obtenerPlantas() {
+        ArrayList<AltaPlantasController.Planta> plantas = new ArrayList<>();
+        try {
+            consulta = con.createStatement();
+            resultado = consulta.executeQuery("SELECT * FROM Planta");
+            while (resultado.next()) {
+                AltaPlantasController.Planta planta = new AltaPlantasController.Planta(resultado.getString("Nombre"), resultado.getString("Descripcion"));
+                plantas.add(planta);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return plantas;
     }
 }

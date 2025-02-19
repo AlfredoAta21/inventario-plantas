@@ -40,3 +40,10 @@ END //
 DELIMITER ;
 
 
+/*Esta tabla se quedara asi por el momento, despues la cambiare para ponerle mas cosas */
+
+CREATE TABLE Planta (
+                        Nombre VARCHAR(50) PRIMARY KEY,
+                        Descripcion VARCHAR(255) NOT NULL
+);
+

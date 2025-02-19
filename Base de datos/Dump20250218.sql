@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `planta`
+--
+
+DROP TABLE IF EXISTS `planta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `planta` (
+  `Nombre` varchar(50) NOT NULL,
+  `Descripcion` varchar(255) NOT NULL,
+  PRIMARY KEY (`Nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `planta`
+--
+
+LOCK TABLES `planta` WRITE;
+/*!40000 ALTER TABLE `planta` DISABLE KEYS */;
+INSERT INTO `planta` VALUES ('Jazmin','El jazmín es una planta trepadora originaria de Asia que se caracteriza por sus flores perfumadas y su aroma dulce');
+/*!40000 ALTER TABLE `planta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuario`
 --
 
@@ -40,10 +64,6 @@ LOCK TABLES `usuario` WRITE;
 INSERT INTO `usuario` VALUES ('Blanca','123',NULL,0),('Coco','123',NULL,0),('Miyu','123',NULL,1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'catalogo'
---
 
 --
 -- Dumping routines for database 'catalogo'
@@ -102,4 +122,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-15 21:53:12
+-- Dump completed on 2025-02-18 21:12:48

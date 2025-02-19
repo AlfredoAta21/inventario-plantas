@@ -1,5 +1,6 @@
 package controllers;
 
+import BaseDatos.BaseDatos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -18,8 +16,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AltaPlantasController {
+    BaseDatos baseDatos = new BaseDatos();
 
     @FXML
     private TextField txtNombrePlanta;
@@ -30,18 +30,28 @@ public class AltaPlantasController {
     @FXML
     private TableColumn<Planta, String> colNombrePlanta;
 
+    @FXML
+    private TableColumn<Planta, String> colDescripcionPlanta;
+
+    @FXML
     private ObservableList<Planta> plantasList;
+
+    @FXML
+    private TextArea txtDescripcion;
 
     @FXML
     public void initialize() {
         plantasList = FXCollections.observableArrayList();
         colNombrePlanta.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        colDescripcionPlanta.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         tablePlantas.setItems(plantasList);
+        obtenerPlantas();
     }
 
     @FXML
     void handleAltaPlanta(ActionEvent event) {
         String nombrePlanta = txtNombrePlanta.getText();
+        String descripcion = txtDescripcion.getText();
 
         if (nombrePlanta.isEmpty()) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -49,10 +59,18 @@ public class AltaPlantasController {
             alert.setHeaderText(null);
             alert.setContentText("El nombre de la planta no puede estar vacío.");
             alert.showAndWait();
+        } else if (descripcion.isEmpty()) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("La descripción de la planta no puede estar vacía.");
+            alert.showAndWait();
         } else {
-            Planta planta = new Planta(nombrePlanta);
+            Planta planta = new Planta(nombrePlanta, descripcion);
             plantasList.add(planta);
+            agregarPlanta(nombrePlanta, descripcion);
             txtNombrePlanta.clear();
+            txtDescripcion.clear();
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setHeaderText(null);
@@ -63,13 +81,19 @@ public class AltaPlantasController {
 
     public static class Planta {
         private final String nombre;
+        private String descripcion;
 
-        public Planta(String nombre) {
+        public Planta(String nombre, String descripcion) {
             this.nombre = nombre;
+            this.descripcion = descripcion;
         }
 
         public String getNombre() {
             return nombre;
+        }
+
+        public String getDescripcion() {
+            return descripcion;
         }
     }
 
@@ -90,6 +114,18 @@ public class AltaPlantasController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void agregarPlanta(String nombre, String descripcion) {
+        baseDatos.agregarPlanta(nombre, descripcion);
+    }
+
+    public void obtenerPlantas() {
+        plantasList.clear();
+        ArrayList<Planta> plantas = baseDatos.obtenerPlantas();
+        if (plantas != null){
+            plantasList.addAll(plantas);
         }
     }
 }

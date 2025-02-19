@@ -1,6 +1,6 @@
 package application;
 
-import controllers.BaseDatos;
+import BaseDatos.BaseDatos;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
