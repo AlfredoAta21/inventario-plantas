@@ -79,6 +79,34 @@ public class AltaPlantasController {
         }
     }
 
+    @FXML
+    void handleEliminarPlanta(ActionEvent event) {
+        Planta selectedPlanta = tablePlantas.getSelectionModel().getSelectedItem();
+        if (selectedPlanta != null) {
+            String nombrePlanta = selectedPlanta.getNombre();
+            if (baseDatos.eliminarPlanta(nombrePlanta)) {
+                plantasList.remove(selectedPlanta);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Éxito");
+                alert.setHeaderText(null);
+                alert.setContentText("Planta " + nombrePlanta + " eliminada exitosamente.");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("No se pudo eliminar la planta " + nombrePlanta + ".");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, seleccione una planta para eliminar.");
+            alert.showAndWait();
+        }
+    }
+
     public static class Planta {
         private final String nombre;
         private String descripcion;

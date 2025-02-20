@@ -19,14 +19,14 @@
    </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf5f0" height="682.0" stroke="BLACK" strokeType="INSIDE" width="1040.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="404.0" layoutX="136.0" layoutY="231.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="795.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="404.0" layoutX="57.0" layoutY="231.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="795.0" />
       <Label layoutX="52.0" layoutY="96.0" text="Nombre de la Planta:" textFill="#32333d">
          <font>
             <Font size="17.0" />
          </font></Label>
       <TextField fx:id="txtNombrePlanta" layoutX="247.0" layoutY="97.0" prefHeight="25.0" prefWidth="178.0" />
       <Button layoutX="907.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonAlta" text="Dar de Alta" />
-      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="194.0" layoutY="282.0" prefHeight="303.0" prefWidth="679.0">
+      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="115.0" layoutY="281.0" prefHeight="303.0" prefWidth="679.0">
          <columns>
             <TableColumn fx:id="colNombrePlanta" prefWidth="190.0" text="Nombre de la Planta" />
             <TableColumn fx:id="colDescripcionPlanta" prefWidth="488.0" text="Descripción" />
@@ -54,5 +54,7 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button layoutX="907.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonModificar" text="Modificar" />
+      <Button layoutX="907.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleEliminarPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonEliminar" text="Eliminar" />
    </children>
 </AnchorPane>

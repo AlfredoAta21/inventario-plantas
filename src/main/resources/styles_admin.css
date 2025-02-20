@@ -41,3 +41,25 @@
     -fx-background-color: #126ba2;
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.1) , 3, 0, 0, 1 );
 }
+.buttonEliminar {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 5, 0, 0, 1 );
+    -fx-content-display: left;
+
+}
+
+.buttonEliminar:hover {
+    -fx-background-color: #D32F2F;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.3) , 8, 0, 0, 2 );
+}
+
+.buttonEliminar:pressed {
+    -fx-background-color: #B71C1C;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.1) , 3, 0, 0, 1 );
+}

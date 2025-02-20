@@ -14,7 +14,6 @@ public class BaseDatos {
     private final String AGREGAR_USUARIO = "INSERT INTO Usuario (Nombre, Contraseña, Imagen, esAdmin) VALUES (?, ?, ?, ?)";
     private final String AGREGAR_PLANTA = "INSERT INTO Planta (Nombre, Descripcion) VALUES (?, ?)";
 
-
     public BaseDatos() {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Catalogo", "Hiram", "coco123");
@@ -108,5 +107,18 @@ public class BaseDatos {
             System.out.println(e);
         }
         return plantas;
+    }
+
+    public boolean eliminarPlanta(String nombre) {
+        try {
+            PreparedStatement ps = con.prepareStatement("DELETE FROM Planta WHERE Nombre = ?");
+            ps.setString(1, nombre);
+            ps.executeUpdate();
+            System.out.println("Planta eliminada");
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
     }
 }
