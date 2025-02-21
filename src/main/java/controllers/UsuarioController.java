@@ -22,7 +22,6 @@ public class UsuarioController {
 
     BaseDatos baseDatos = new BaseDatos();
 
-
     @FXML
     private TableView<AltaPlantasController.Planta> tablePlantas;
 
@@ -33,14 +32,25 @@ public class UsuarioController {
     private TableColumn<AltaPlantasController.Planta, String> colDescripcionPlanta;
 
     @FXML
-    private ObservableList<AltaPlantasController.Planta> plantasList;
+    private TableColumn<AltaPlantasController.Planta, String> colNombreCientifico;
 
+    @FXML
+    private TableColumn<AltaPlantasController.Planta, String> colPropiedades;
+
+    @FXML
+    private TableColumn<AltaPlantasController.Planta, String> colEfectosSecundarios;
+
+    @FXML
+    private ObservableList<AltaPlantasController.Planta> plantasList;
 
     @FXML
     public void initialize() {
         plantasList = FXCollections.observableArrayList();
         colNombrePlanta.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colDescripcionPlanta.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        colNombreCientifico.setCellValueFactory(new PropertyValueFactory<>("nombreCientifico"));
+        colPropiedades.setCellValueFactory(new PropertyValueFactory<>("propiedades"));
+        colEfectosSecundarios.setCellValueFactory(new PropertyValueFactory<>("efectosSecundarios"));
         tablePlantas.setItems(plantasList);
         obtenerPlantas();
     }

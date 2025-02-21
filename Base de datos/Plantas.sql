@@ -47,3 +47,7 @@ CREATE TABLE Planta (
                         Descripcion VARCHAR(255) NOT NULL
 );
 
+ALTER TABLE Planta ADD COLUMN NombreCientifico VARCHAR(100);
+ALTER TABLE Planta ADD COLUMN Propiedades VARCHAR(255);
+ALTER TABLE Planta ADD COLUMN EfectosSecundarios VARCHAR(255);
+
