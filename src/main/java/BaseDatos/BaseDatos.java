@@ -12,7 +12,7 @@ public class BaseDatos {
     private static ResultSet resultado;
 
     private final String AGREGAR_USUARIO = "INSERT INTO Usuario (Nombre, Contraseña, Imagen, esAdmin) VALUES (?, ?, ?, ?)";
-    private final String AGREGAR_PLANTA = "INSERT INTO Planta (Nombre, Descripcion) VALUES (?, ?)";
+    private final String AGREGAR_PLANTA = "INSERT INTO Planta (Nombre, Descripcion, NombreCientifico, Propiedades, EfectosSecundarios) VALUES (?, ?, ?, ?, ?)";
 
     public BaseDatos() {
         try {
@@ -21,6 +21,7 @@ public class BaseDatos {
             System.out.println(e);
         }
     }
+
     public boolean conectar() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
@@ -70,21 +71,24 @@ public class BaseDatos {
         try {
             consulta = con.createStatement();
             resultado = consulta.executeQuery("CALL obtener_admin('" + username + "', '" + password + "')");
-        if (resultado.next() && resultado.getInt("esAdmin") == 1) {
-            return true;
-        }
+            if (resultado.next() && resultado.getInt("esAdmin") == 1) {
+                return true;
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
         return false;
     }
 
-    public boolean agregarPlanta(String nombre, String descripcion) {
+    public boolean agregarPlanta(String nombre, String descripcion, String nombreCientifico, String propiedades, String efectosSecundarios) {
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(AGREGAR_PLANTA);
             ps.setString(1, nombre);
             ps.setString(2, descripcion);
+            ps.setString(3, nombreCientifico);
+            ps.setString(4, propiedades);
+            ps.setString(5, efectosSecundarios);
             ps.executeUpdate();
             System.out.println("Planta agregada");
             return true;
@@ -94,13 +98,19 @@ public class BaseDatos {
         }
     }
 
-    public ArrayList obtenerPlantas() {
+    public ArrayList<AltaPlantasController.Planta> obtenerPlantas() {
         ArrayList<AltaPlantasController.Planta> plantas = new ArrayList<>();
         try {
             consulta = con.createStatement();
             resultado = consulta.executeQuery("SELECT * FROM Planta");
             while (resultado.next()) {
-                AltaPlantasController.Planta planta = new AltaPlantasController.Planta(resultado.getString("Nombre"), resultado.getString("Descripcion"));
+                AltaPlantasController.Planta planta = new AltaPlantasController.Planta(
+                    resultado.getString("Nombre"),
+                    resultado.getString("Descripcion"),
+                    resultado.getString("NombreCientifico"),
+                    resultado.getString("Propiedades"),
+                    resultado.getString("EfectosSecundarios")
+                );
                 plantas.add(planta);
             }
         } catch (Exception e) {

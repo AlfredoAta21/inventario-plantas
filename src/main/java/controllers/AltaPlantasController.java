@@ -34,47 +34,67 @@ public class AltaPlantasController {
     private TableColumn<Planta, String> colDescripcionPlanta;
 
     @FXML
+    private TableColumn<Planta, String> colNombreCientifico;
+
+    @FXML
+    private TableColumn<Planta, String> colPropiedades;
+
+    @FXML
+    private TableColumn<Planta, String> colEfectosSecundarios;
+
+    @FXML
     private ObservableList<Planta> plantasList;
 
     @FXML
     private TextArea txtDescripcion;
 
     @FXML
+    private TextField txtNombreCientifico;
+
+    @FXML
+    private TextArea txtPropiedades;
+
+    @FXML
+    private TextArea txtEfecSecundarios;
+
+    @FXML
     public void initialize() {
         plantasList = FXCollections.observableArrayList();
         colNombrePlanta.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colDescripcionPlanta.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        colNombreCientifico.setCellValueFactory(new PropertyValueFactory<>("nombreCientifico"));
+        colPropiedades.setCellValueFactory(new PropertyValueFactory<>("propiedades"));
+        colEfectosSecundarios.setCellValueFactory(new PropertyValueFactory<>("efectosSecundarios"));
         tablePlantas.setItems(plantasList);
         obtenerPlantas();
     }
 
     @FXML
     void handleAltaPlanta(ActionEvent event) {
-        String nombrePlanta = txtNombrePlanta.getText();
+        String nombre = txtNombrePlanta.getText();
         String descripcion = txtDescripcion.getText();
+        String nombreCientifico = txtNombreCientifico.getText();
+        String propiedades = txtPropiedades.getText();
+        String efectosSecundarios = txtEfecSecundarios.getText();
 
-        if (nombrePlanta.isEmpty()) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("El nombre de la planta no puede estar vacío.");
-            alert.showAndWait();
-        } else if (descripcion.isEmpty()) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("La descripción de la planta no puede estar vacía.");
-            alert.showAndWait();
-        } else {
-            Planta planta = new Planta(nombrePlanta, descripcion);
-            plantasList.add(planta);
-            agregarPlanta(nombrePlanta, descripcion);
-            txtNombrePlanta.clear();
-            txtDescripcion.clear();
+        if (baseDatos.agregarPlanta(nombre, descripcion, nombreCientifico, propiedades, efectosSecundarios)) {
+            obtenerPlantas();
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Éxito");
             alert.setHeaderText(null);
-            alert.setContentText("Planta " + nombrePlanta + " dada de alta exitosamente.");
+            alert.setContentText("Planta " + nombre + " agregada exitosamente.");
+            alert.showAndWait();
+
+            txtNombrePlanta.clear();
+            txtDescripcion.clear();
+            txtNombreCientifico.clear();
+            txtPropiedades.clear();
+            txtEfecSecundarios.clear();
+        } else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("No se pudo agregar la planta " + nombre + ".");
             alert.showAndWait();
         }
     }
@@ -110,10 +130,16 @@ public class AltaPlantasController {
     public static class Planta {
         private final String nombre;
         private String descripcion;
+        private String nombreCientifico;
+        private String propiedades;
+        private String efectosSecundarios;
 
-        public Planta(String nombre, String descripcion) {
+        public Planta(String nombre, String descripcion, String nombreCientifico, String propiedades, String efectosSecundarios) {
             this.nombre = nombre;
             this.descripcion = descripcion;
+            this.nombreCientifico = nombreCientifico;
+            this.propiedades = propiedades;
+            this.efectosSecundarios = efectosSecundarios;
         }
 
         public String getNombre() {
@@ -122,6 +148,18 @@ public class AltaPlantasController {
 
         public String getDescripcion() {
             return descripcion;
+        }
+
+        public String getNombreCientifico() {
+            return nombreCientifico;
+        }
+
+        public String getPropiedades() {
+            return propiedades;
+        }
+
+        public String getEfectosSecundarios() {
+            return efectosSecundarios;
         }
     }
 
@@ -145,14 +183,10 @@ public class AltaPlantasController {
         }
     }
 
-    public void agregarPlanta(String nombre, String descripcion) {
-        baseDatos.agregarPlanta(nombre, descripcion);
-    }
-
     public void obtenerPlantas() {
         plantasList.clear();
         ArrayList<Planta> plantas = baseDatos.obtenerPlantas();
-        if (plantas != null){
+        if (plantas != null) {
             plantasList.addAll(plantas);
         }
     }

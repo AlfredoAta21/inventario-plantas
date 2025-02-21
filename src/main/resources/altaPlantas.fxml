@@ -19,17 +19,20 @@
    </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf5f0" height="682.0" stroke="BLACK" strokeType="INSIDE" width="1040.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="404.0" layoutX="57.0" layoutY="231.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="795.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="369.0" layoutX="52.0" layoutY="291.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="805.0" />
       <Label layoutX="52.0" layoutY="96.0" text="Nombre de la Planta:" textFill="#32333d">
          <font>
             <Font size="17.0" />
          </font></Label>
       <TextField fx:id="txtNombrePlanta" layoutX="247.0" layoutY="97.0" prefHeight="25.0" prefWidth="178.0" />
-      <Button layoutX="907.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonAlta" text="Dar de Alta" />
-      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="115.0" layoutY="281.0" prefHeight="303.0" prefWidth="679.0">
+      <Button layoutX="907.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonAlta" text="Dar de Alta" />
+      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="61.0" layoutY="321.0" prefHeight="303.0" prefWidth="774.0">
          <columns>
             <TableColumn fx:id="colNombrePlanta" prefWidth="190.0" text="Nombre de la Planta" />
-            <TableColumn fx:id="colDescripcionPlanta" prefWidth="488.0" text="Descripción" />
+            <TableColumn fx:id="colDescripcionPlanta" prefWidth="178.4000244140625" text="Descripción" />
+            <TableColumn fx:id="colNombreCientifico" prefWidth="133.60003662109375" text="Nombre Cientifico" />
+            <TableColumn fx:id="colPropiedades" prefWidth="140.00006103515625" text="Propiedades" />
+            <TableColumn fx:id="colEfectosSecundarios" prefWidth="128.80002441406248" text="Efectos Secundarios" />
          </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a402b" height="60.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1040.0" />
@@ -54,7 +57,25 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="907.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonModificar" text="Modificar" />
-      <Button layoutX="907.0" layoutY="281.0" mnemonicParsing="false" onAction="#handleEliminarPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonEliminar" text="Eliminar" />
+      <Button layoutX="907.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonModificar" text="Modificar" />
+      <Button layoutX="907.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleEliminarPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonEliminar" text="Eliminar" />
+      <Label layoutX="521.0" layoutY="96.0" text="Nombre Cientifico:" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNombreCientifico" layoutX="678.0" layoutY="96.0" prefHeight="25.0" prefWidth="178.0" />
+      <Label layoutX="527.0" layoutY="155.0" text="Propiedades:" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtPropiedades" layoutX="633.0" layoutY="140.0" prefHeight="60.0" prefWidth="267.0" />
+      <Label layoutX="52.0" layoutY="226.0" prefHeight="27.0" prefWidth="198.0" text="Efectos Secundarios" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtEfecSecundarios" layoutX="247.0" layoutY="216.0" prefHeight="60.0" prefWidth="267.0" />
    </children>
 </AnchorPane>

@@ -37,10 +37,13 @@
             </font>
         </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="404.0" layoutX="146.0" layoutY="241.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="795.0" />
-      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="204.0" layoutY="292.0" prefHeight="303.0" prefWidth="679.0">
+      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="163.0" layoutY="277.0" prefHeight="303.0" prefWidth="774.0">
          <columns>
             <TableColumn fx:id="colNombrePlanta" prefWidth="190.0" text="Nombre de la Planta" />
-            <TableColumn fx:id="colDescripcionPlanta" prefWidth="488.0" text="Descripción" />
+            <TableColumn fx:id="colDescripcionPlanta" prefWidth="178.4000244140625" text="Descripción" />
+            <TableColumn fx:id="colNombreCientifico" prefWidth="133.60003662109375" text="Nombre Cientifico" />
+            <TableColumn fx:id="colPropiedades" prefWidth="140.00006103515625" text="Propiedades" />
+            <TableColumn fx:id="colEfectosSecundarios" prefWidth="128.80002441406248" text="Efectos Secundarios" />
          </columns>
       </TableView>
     </children>
