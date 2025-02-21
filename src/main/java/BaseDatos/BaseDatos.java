@@ -131,4 +131,24 @@ public class BaseDatos {
             return false;
         }
     }
+
+    public boolean modificarPlanta(String oldNombre, String nombre, String descripcion, String nombreCientifico, String propiedades, String efectosSecundarios) {
+    PreparedStatement ps = null;
+    try {
+        String query = "UPDATE Planta SET Nombre = ?, Descripcion = ?, NombreCientifico = ?, Propiedades = ?, EfectosSecundarios = ? WHERE Nombre = ?";
+        ps = con.prepareStatement(query);
+        ps.setString(1, nombre);
+        ps.setString(2, descripcion);
+        ps.setString(3, nombreCientifico);
+        ps.setString(4, propiedades);
+        ps.setString(5, efectosSecundarios);
+        ps.setString(6, oldNombre);
+        ps.executeUpdate();
+        System.out.println("Planta modificada");
+        return true;
+    } catch (Exception e) {
+        System.out.println(e);
+        return false;
+    }
+}
 }

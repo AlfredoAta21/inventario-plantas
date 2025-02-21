@@ -57,7 +57,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="907.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonModificar" text="Modificar" />
+      <Button layoutX="907.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleModificarPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonModificar" text="Modificar" />
       <Button layoutX="907.0" layoutY="341.0" mnemonicParsing="false" onAction="#handleEliminarPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonEliminar" text="Eliminar" />
       <Label layoutX="521.0" layoutY="96.0" text="Nombre Cientifico:" textFill="#32333d">
          <font>

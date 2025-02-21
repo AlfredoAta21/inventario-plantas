@@ -67,6 +67,17 @@ public class AltaPlantasController {
         colEfectosSecundarios.setCellValueFactory(new PropertyValueFactory<>("efectosSecundarios"));
         tablePlantas.setItems(plantasList);
         obtenerPlantas();
+
+        // Add listener to populate fields when a plant is selected
+        tablePlantas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                txtNombrePlanta.setText(newValue.getNombre());
+                txtDescripcion.setText(newValue.getDescripcion());
+                txtNombreCientifico.setText(newValue.getNombreCientifico());
+                txtPropiedades.setText(newValue.getPropiedades());
+                txtEfecSecundarios.setText(newValue.getEfectosSecundarios());
+            }
+        });
     }
 
     @FXML
@@ -85,6 +96,7 @@ public class AltaPlantasController {
             alert.setContentText("Planta " + nombre + " agregada exitosamente.");
             alert.showAndWait();
 
+            // Clear the text fields and text areas
             txtNombrePlanta.clear();
             txtDescripcion.clear();
             txtNombreCientifico.clear();
@@ -95,6 +107,47 @@ public class AltaPlantasController {
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("No se pudo agregar la planta " + nombre + ".");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void handleModificarPlanta(ActionEvent event) {
+        Planta selectedPlanta = tablePlantas.getSelectionModel().getSelectedItem();
+        if (selectedPlanta != null) {
+            String nombre = txtNombrePlanta.getText();
+            String descripcion = txtDescripcion.getText();
+            String nombreCientifico = txtNombreCientifico.getText();
+            String propiedades = txtPropiedades.getText();
+            String efectosSecundarios = txtEfecSecundarios.getText();
+
+            if (baseDatos.modificarPlanta(selectedPlanta.getNombre(), nombre, descripcion, nombreCientifico, propiedades, efectosSecundarios)) {
+                obtenerPlantas();
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Éxito");
+                alert.setHeaderText(null);
+                alert.setContentText("Planta " + nombre + " modificada exitosamente.");
+                alert.showAndWait();
+
+                // limpiar los campos de texto y áreas de texto
+                txtNombrePlanta.clear();
+                txtDescripcion.clear();
+                txtNombreCientifico.clear();
+                txtPropiedades.clear();
+                txtEfecSecundarios.clear();
+
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("No se pudo modificar la planta " + nombre + ".");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, seleccione una planta para modificar.");
             alert.showAndWait();
         }
     }
@@ -111,6 +164,14 @@ public class AltaPlantasController {
                 alert.setHeaderText(null);
                 alert.setContentText("Planta " + nombrePlanta + " eliminada exitosamente.");
                 alert.showAndWait();
+
+                // limpiar los campos de texto y áreas de texto
+                txtNombrePlanta.clear();
+                txtDescripcion.clear();
+                txtNombreCientifico.clear();
+                txtPropiedades.clear();
+                txtEfecSecundarios.clear();
+
             } else {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error");
