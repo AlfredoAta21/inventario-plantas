@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,15 +38,44 @@
                 <Font size="14.0" />
             </font>
         </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="404.0" layoutX="146.0" layoutY="241.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="795.0" />
-      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="163.0" layoutY="277.0" prefHeight="303.0" prefWidth="774.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="595.0" layoutX="9.0" layoutY="73.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="460.0" />
+      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="27.0" layoutY="84.0" prefHeight="580.0" prefWidth="420.0">
          <columns>
-            <TableColumn fx:id="colNombrePlanta" prefWidth="190.0" text="Nombre de la Planta" />
-            <TableColumn fx:id="colDescripcionPlanta" prefWidth="178.4000244140625" text="Descripción" />
-            <TableColumn fx:id="colNombreCientifico" prefWidth="133.60003662109375" text="Nombre Cientifico" />
-            <TableColumn fx:id="colPropiedades" prefWidth="140.00006103515625" text="Propiedades" />
-            <TableColumn fx:id="colEfectosSecundarios" prefWidth="128.80002441406248" text="Efectos Secundarios" />
+            <TableColumn fx:id="colNombrePlanta" prefWidth="419.0" text="Nombre de la Planta" />
          </columns>
       </TableView>
+      <TextField fx:id="txtUsername" layoutX="486.0" layoutY="72.0" prefHeight="25.0" prefWidth="479.0" promptText="Buscar" />
+      <Button layoutX="976.0" layoutY="72.0" mnemonicParsing="false" text="Buscar" />
+      <ImageView fx:id="imageView" fitHeight="178.0" fitWidth="178.0" layoutX="486.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="718.0" layoutY="125.0" text="Nombre de la Planta:" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNombrePlanta" layoutX="718.0" layoutY="163.0" prefHeight="25.0" prefWidth="178.0" />
+      <Label layoutX="504.0" layoutY="423.0" prefHeight="27.0" prefWidth="198.0" text="Descripción de la Planta:" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtDescripcion" layoutX="709.0" layoutY="406.0" prefHeight="60.0" prefWidth="267.0" />
+      <Label layoutX="719.0" layoutY="207.0" text="Nombre Cientifico:" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNombreCientifico" layoutX="718.0" layoutY="243.0" prefHeight="25.0" prefWidth="178.0" />
+      <Label layoutX="527.0" layoutY="341.0" text="Propiedades:" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtPropiedades" layoutX="709.0" layoutY="324.0" prefHeight="60.0" prefWidth="267.0" />
+      <Label layoutX="504.0" layoutY="526.0" prefHeight="27.0" prefWidth="198.0" text="Efectos Secundarios" textFill="#32333d">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtEfecSecundarios" layoutX="709.0" layoutY="509.0" prefHeight="60.0" prefWidth="267.0" />
     </children>
 </AnchorPane>

@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -28,29 +29,35 @@ public class UsuarioController {
     @FXML
     private TableColumn<AltaPlantasController.Planta, String> colNombrePlanta;
 
-    @FXML
-    private TableColumn<AltaPlantasController.Planta, String> colDescripcionPlanta;
-
-    @FXML
-    private TableColumn<AltaPlantasController.Planta, String> colNombreCientifico;
-
-    @FXML
-    private TableColumn<AltaPlantasController.Planta, String> colPropiedades;
-
-    @FXML
-    private TableColumn<AltaPlantasController.Planta, String> colEfectosSecundarios;
 
     @FXML
     private ObservableList<AltaPlantasController.Planta> plantasList;
 
     @FXML
+    private TextField txtNombrePlanta;
+
+    @FXML
+    private TextArea txtDescripcion;
+
+    @FXML
+    private TextField txtNombreCientifico;
+
+    @FXML
+    private TextArea txtPropiedades;
+
+    @FXML
+    private TextArea txtEfecSecundarios;
+
+    @FXML
+    private ImageView imageView;
+
+    @FXML
+    private Label nombrePlanta;
+
+    @FXML
     public void initialize() {
         plantasList = FXCollections.observableArrayList();
         colNombrePlanta.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        colDescripcionPlanta.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
-        colNombreCientifico.setCellValueFactory(new PropertyValueFactory<>("nombreCientifico"));
-        colPropiedades.setCellValueFactory(new PropertyValueFactory<>("propiedades"));
-        colEfectosSecundarios.setCellValueFactory(new PropertyValueFactory<>("efectosSecundarios"));
         tablePlantas.setItems(plantasList);
         obtenerPlantas();
     }
@@ -77,9 +84,29 @@ public class UsuarioController {
 
     public void obtenerPlantas() {
         plantasList.clear();
+
         ArrayList<AltaPlantasController.Planta> plantas = baseDatos.obtenerPlantas();
         if (plantas != null){
             plantasList.addAll(plantas);
         }
+    }
+
+    public void llenarSeleccionado(){
+        tablePlantas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                txtNombrePlanta.setText(newValue.getNombre());
+                txtDescripcion.setText(newValue.getDescripcion());
+                txtNombreCientifico.setText(newValue.getNombreCientifico());
+                txtPropiedades.setText(newValue.getPropiedades());
+                txtEfecSecundarios.setText(newValue.getEfectosSecundarios());
+
+                imageView.setImage(newValue.getImagen());
+
+                nombrePlanta.setText(newValue.getNombre());
+            } else {
+                imageView.setImage(null);
+                nombrePlanta.setText("");
+            }
+        });
     }
 }
