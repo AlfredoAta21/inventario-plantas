@@ -44,7 +44,7 @@
             <TableColumn fx:id="colNombrePlanta" prefWidth="419.0" text="Nombre de la Planta" />
          </columns>
       </TableView>
-      <TextField fx:id="txtUsername" layoutX="486.0" layoutY="72.0" prefHeight="25.0" prefWidth="479.0" promptText="Buscar" />
+      <TextField fx:id="txtUsername" layoutX="486.0" layoutY="72.0" prefHeight="25.0" prefWidth="479.0" promptText="🔍 Buscar " />
       <Button layoutX="976.0" layoutY="72.0" mnemonicParsing="false" text="Buscar" />
       <ImageView fx:id="imageView" fitHeight="178.0" fitWidth="178.0" layoutX="486.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="718.0" layoutY="125.0" text="Nombre de la Planta:" textFill="#32333d">
