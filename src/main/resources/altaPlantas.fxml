@@ -19,14 +19,14 @@
    </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#faf5f0" height="682.0" stroke="BLACK" strokeType="INSIDE" width="1040.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="369.0" layoutX="52.0" layoutY="291.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="805.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f2ebdc" height="369.0" layoutX="23.0" layoutY="292.0" stroke="#f2ebdc" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="5.0" width="805.0" />
       <Label layoutX="52.0" layoutY="96.0" text="Nombre de la Planta:" textFill="#32333d">
          <font>
             <Font size="17.0" />
          </font></Label>
       <TextField fx:id="txtNombrePlanta" layoutX="247.0" layoutY="97.0" prefHeight="25.0" prefWidth="178.0" />
       <Button layoutX="907.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleAltaPlanta" prefHeight="25.0" prefWidth="110.0" styleClass="buttonAlta" text="Dar de Alta" />
-      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="61.0" layoutY="321.0" prefHeight="303.0" prefWidth="774.0">
+      <TableView fx:id="tablePlantas" fixedCellSize="50.0" layoutX="39.0" layoutY="307.0" prefHeight="337.0" prefWidth="774.0">
          <columns>
             <TableColumn fx:id="colNombrePlanta" prefWidth="190.0" text="Nombre de la Planta" />
             <TableColumn fx:id="colDescripcionPlanta" prefWidth="178.4000244140625" text="Descripción" />
@@ -77,5 +77,16 @@
          </font>
       </Label>
       <TextArea fx:id="txtEfecSecundarios" layoutX="247.0" layoutY="216.0" prefHeight="60.0" prefWidth="267.0" />
+      <Button layoutX="535.0" layoutY="226.0" mnemonicParsing="false" onAction="#agregarImagen" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #067f42; -fx-font-size: 13;" styleClass="buttonAlta" text="Agregar imagen" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label fx:id="nombrePlanta" alignment="CENTER" contentDisplay="CENTER" layoutX="867.0" layoutY="431.0" prefHeight="35.0" prefWidth="129.0" text="NOMBRE PLANTA" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imageView" fitHeight="152.0" fitWidth="178.0" layoutX="843.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

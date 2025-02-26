@@ -1,7 +1,11 @@
 package BaseDatos;
 
 import controllers.AltaPlantasController;
+import javafx.scene.image.Image;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -12,7 +16,7 @@ public class BaseDatos {
     private static ResultSet resultado;
 
     private final String AGREGAR_USUARIO = "INSERT INTO Usuario (Nombre, Contraseña, Imagen, esAdmin) VALUES (?, ?, ?, ?)";
-    private final String AGREGAR_PLANTA = "INSERT INTO Planta (Nombre, Descripcion, NombreCientifico, Propiedades, EfectosSecundarios) VALUES (?, ?, ?, ?, ?)";
+    private final String AGREGAR_PLANTA = "INSERT INTO Planta (nombre, descripcion, nombreCientifico, propiedades, efectosSecundarios, imagen) VALUES (?, ?, ?, ?, ?, ?)";
 
     public BaseDatos() {
         try {
@@ -80,7 +84,7 @@ public class BaseDatos {
         return false;
     }
 
-    public boolean agregarPlanta(String nombre, String descripcion, String nombreCientifico, String propiedades, String efectosSecundarios) {
+    public boolean agregarPlanta(String nombre, String descripcion, String nombreCientifico, String propiedades, String efectosSecundarios, byte[] imagenBytes) {
         PreparedStatement ps = null;
         try {
             ps = con.prepareStatement(AGREGAR_PLANTA);
@@ -89,28 +93,58 @@ public class BaseDatos {
             ps.setString(3, nombreCientifico);
             ps.setString(4, propiedades);
             ps.setString(5, efectosSecundarios);
+
+            // Si hay una imagen, la guardamos en la base de datos
+            if (imagenBytes != null) {
+                ps.setBytes(6, imagenBytes);
+            } else {
+                ps.setNull(6, java.sql.Types.BLOB);
+            }
+
             ps.executeUpdate();
             System.out.println("Planta agregada");
             return true;
         } catch (Exception e) {
             System.out.println(e);
             return false;
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
+
 
     public ArrayList<AltaPlantasController.Planta> obtenerPlantas() {
         ArrayList<AltaPlantasController.Planta> plantas = new ArrayList<>();
         try {
             consulta = con.createStatement();
             resultado = consulta.executeQuery("SELECT * FROM Planta");
+
             while (resultado.next()) {
+                // Recuperar los datos de la planta
+                String nombre = resultado.getString("Nombre");
+                String descripcion = resultado.getString("Descripcion");
+                String nombreCientifico = resultado.getString("NombreCientifico");
+                String propiedades = resultado.getString("Propiedades");
+                String efectosSecundarios = resultado.getString("EfectosSecundarios");
+
+                // Recuperar la imagen como byte[]
+                byte[] imagenBytes = resultado.getBytes("Imagen");
+                Image imagen = null;
+
+                if (imagenBytes != null && imagenBytes.length > 0) {
+                    ByteArrayInputStream bis = new ByteArrayInputStream(imagenBytes);
+                    imagen = new Image(bis);
+                }
+
+                // Crear la instancia de la planta con la imagen
                 AltaPlantasController.Planta planta = new AltaPlantasController.Planta(
-                    resultado.getString("Nombre"),
-                    resultado.getString("Descripcion"),
-                    resultado.getString("NombreCientifico"),
-                    resultado.getString("Propiedades"),
-                    resultado.getString("EfectosSecundarios")
+                        nombre, descripcion, nombreCientifico, propiedades, efectosSecundarios, imagen
                 );
+
                 plantas.add(planta);
             }
         } catch (Exception e) {
@@ -118,6 +152,7 @@ public class BaseDatos {
         }
         return plantas;
     }
+
 
     public boolean eliminarPlanta(String nombre) {
         try {
