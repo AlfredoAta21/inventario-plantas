@@ -138,12 +138,14 @@ public class BaseDatos {
                 if (imagenBytes != null && imagenBytes.length > 0) {
                     ByteArrayInputStream bis = new ByteArrayInputStream(imagenBytes);
                     imagen = new Image(bis);
+                    System.out.println("Si hay imagen");
                 }
 
                 // Crear la instancia de la planta con la imagen
                 AltaPlantasController.Planta planta = new AltaPlantasController.Planta(
                         nombre, descripcion, nombreCientifico, propiedades, efectosSecundarios, imagen
                 );
+                System.out.println(planta.getNombre());
 
                 plantas.add(planta);
             }
@@ -186,4 +188,36 @@ public class BaseDatos {
         return false;
     }
 }
+
+    public ArrayList<AltaPlantasController.Planta> buscarPlantas(String nombre){
+        ArrayList<AltaPlantasController.Planta> plantas = new ArrayList<>();
+        try {
+            consulta = con.createStatement();
+            resultado = consulta.executeQuery("SELECT * FROM Planta WHERE Nombre LIKE '%" + nombre + "%'");
+            while (resultado.next()) {
+                String nombrePlanta = resultado.getString("Nombre");
+                String descripcion = resultado.getString("Descripcion");
+                String nombreCientifico = resultado.getString("NombreCientifico");
+                String propiedades = resultado.getString("Propiedades");
+                String efectosSecundarios = resultado.getString("EfectosSecundarios");
+
+                byte[] imagenBytes = resultado.getBytes("Imagen");
+                Image imagen = null;
+
+                if (imagenBytes != null && imagenBytes.length > 0) {
+                    ByteArrayInputStream bis = new ByteArrayInputStream(imagenBytes);
+                    imagen = new Image(bis);
+                }
+
+                AltaPlantasController.Planta planta = new AltaPlantasController.Planta(
+                        nombrePlanta, descripcion, nombreCientifico, propiedades, efectosSecundarios, imagen
+                );
+                System.out.println(planta.getNombre());
+                plantas.add(planta);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return plantas;
+    }
 }

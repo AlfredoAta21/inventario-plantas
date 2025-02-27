@@ -52,13 +52,17 @@ public class UsuarioController {
     private ImageView imageView;
 
     @FXML
-    private Label nombrePlanta;
+    private TextField txtBusqueda;
+
+    @FXML
+    private Button busqueda;
 
     @FXML
     public void initialize() {
         plantasList = FXCollections.observableArrayList();
         colNombrePlanta.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         tablePlantas.setItems(plantasList);
+        tablePlantas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> llenarSeleccionado());
         obtenerPlantas();
     }
 
@@ -92,21 +96,23 @@ public class UsuarioController {
     }
 
     public void llenarSeleccionado(){
-        tablePlantas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                txtNombrePlanta.setText(newValue.getNombre());
-                txtDescripcion.setText(newValue.getDescripcion());
-                txtNombreCientifico.setText(newValue.getNombreCientifico());
-                txtPropiedades.setText(newValue.getPropiedades());
-                txtEfecSecundarios.setText(newValue.getEfectosSecundarios());
+        AltaPlantasController.Planta planta = tablePlantas.getSelectionModel().getSelectedItem();
+        if (planta != null){
+            txtNombrePlanta.setText(planta.getNombre());
+            txtDescripcion.setText(planta.getDescripcion());
+            txtNombreCientifico.setText(planta.getNombreCientifico());
+            txtPropiedades.setText(planta.getPropiedades());
+            txtEfecSecundarios.setText(planta.getEfectosSecundarios());
+            imageView.setImage(planta.getImagen());
+        }
+    }
 
-                imageView.setImage(newValue.getImagen());
-
-                nombrePlanta.setText(newValue.getNombre());
-            } else {
-                imageView.setImage(null);
-                nombrePlanta.setText("");
-            }
-        });
+    @FXML
+    public void buscarPlantas(){
+        plantasList.clear();
+        ArrayList<AltaPlantasController.Planta> plantas = baseDatos.buscarPlantas(txtBusqueda.getText());
+        if (plantas != null){
+            plantasList.addAll(plantas);
+        }
     }
 }
