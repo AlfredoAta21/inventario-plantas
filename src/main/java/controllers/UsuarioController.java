@@ -29,7 +29,6 @@ public class UsuarioController {
     @FXML
     private TableColumn<AltaPlantasController.Planta, String> colNombrePlanta;
 
-
     @FXML
     private ObservableList<AltaPlantasController.Planta> plantasList;
 
@@ -64,6 +63,9 @@ public class UsuarioController {
         tablePlantas.setItems(plantasList);
         tablePlantas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> llenarSeleccionado());
         obtenerPlantas();
+
+        // Agregar ChangeListener al campo de búsqueda
+        txtBusqueda.textProperty().addListener((observable, oldValue, newValue) -> buscarPlantas(newValue));
     }
 
     @FXML
@@ -108,10 +110,20 @@ public class UsuarioController {
     }
 
     @FXML
-    public void buscarPlantas(){
+    public void buscarPlantas(String query) {
         plantasList.clear();
-        ArrayList<AltaPlantasController.Planta> plantas = baseDatos.buscarPlantas(txtBusqueda.getText());
-        if (plantas != null){
+        ArrayList<AltaPlantasController.Planta> plantas = baseDatos.buscarPlantas(query);
+        if (plantas != null) {
+            plantasList.addAll(plantas);
+        }
+    }
+
+    @FXML
+    public void buscarPlantas(ActionEvent event) {
+        String query = txtBusqueda.getText();
+        plantasList.clear();
+        ArrayList<AltaPlantasController.Planta> plantas = baseDatos.buscarPlantas(query);
+        if (plantas != null) {
             plantasList.addAll(plantas);
         }
     }
